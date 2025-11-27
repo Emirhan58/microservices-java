@@ -24,6 +24,7 @@
     <li><a href="#kubernetes-helm">Kubernetes &amp; Helm</a></li>
     <li><a href="#build-run">Build &amp; Run</a></li>
     <li><a href="#folder-structure">Folder Structure</a></li>
+    <li><a href="#credits">Acknowledgements</a></li>
   </ul>
 
   <h2 id="overview">🧩 Overview</h2>
@@ -308,6 +309,23 @@
 ├── helm-new/
 ├── docker-compose/
 └── README.html</code></pre>
+
+<h2 id="credits">🙏 Acknowledgements</h2>
+<p>
+  Special thanks to <strong>ezybytes</strong> for providing high-quality learning materials,
+  architectural guidance, and hands-on resources that greatly inspired the
+  structure and implementation of this microservices ecosystem.
+</p>
+<p>
+  Their practical approach to modern software engineering concepts; microservices,
+  DevOps, Kubernetes, cloud-native design, observability, and distributed systems
+  helped shape many of the ideas included in this repository.
+</p>
+<p>
+  If you're looking to deepen your knowledge in large-scale backend systems,
+  microservices, and cloud-native application development, his content is
+  absolutely worth following.
+</p>
 
 </main>
 </body>

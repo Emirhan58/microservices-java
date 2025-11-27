@@ -1,0 +1,27 @@
+dependencies:
+- name: kiwixbank-common
+  repository: file://../../kiwixbank-common
+  version: 0.1.0
+- name: configserver
+  repository: file://../../kiwixbank-services/configserver
+  version: 0.1.0
+- name: eurekaserver
+  repository: file://../../kiwixbank-services/eurekaserver
+  version: 0.1.0
+- name: accounts
+  repository: file://../../kiwixbank-services/accounts
+  version: 0.1.0
+- name: cards
+  repository: file://../../kiwixbank-services/cards
+  version: 0.1.0
+- name: loans
+  repository: file://../../kiwixbank-services/loans
+  version: 0.1.0
+- name: gatewayserver
+  repository: file://../../kiwixbank-services/gatewayserver
+  version: 0.1.0
+- name: message
+  repository: file://../../kiwixbank-services/message
+  version: 0.1.0
+digest: sha256:993679bdaf111577335f4c0a96e10b468b40a24a081e13c23d97603918fbc4b6
+generated: "2025-11-27T12:09:33.8078783+03:00"

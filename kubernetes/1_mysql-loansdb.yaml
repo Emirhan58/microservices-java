@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loansdb-deployment
+  labels:
+    app: loansdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loansdb
+  template:
+    metadata:
+      labels:
+        app: loansdb
+    spec:
+      containers:
+        - name: loansdb
+          image: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: loansdb
+          ports:
+            - containerPort: 3306
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loansdb
+spec:
+  selector:
+    app: loansdb
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306

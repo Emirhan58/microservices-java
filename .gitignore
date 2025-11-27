@@ -1,0 +1,104 @@
+##############################
+# MAVEN GENERAL IGNORE
+##############################
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+build.log
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Allow target folder inside src (keep tests, resources builds)
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+##############################
+# JAVA / SPRING FILES
+##############################
+*.class
+*.log
+*.ctxt
+
+##############################
+# IDE SETTINGS
+##############################
+
+### IntelliJ IDEA ###
+.idea/
+*.iml
+*.iws
+*.ipr
+
+### Eclipse / STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+##############################
+# OS & EDITOR FILES
+##############################
+.DS_Store
+Thumbs.db
+
+##############################
+# DOCKER / COMPOSE / IMAGES
+##############################
+*.pid
+*.seed
+docker-compose.override.yml
+docker-data/
+**/logs/
+**/tmp/
+
+##############################
+# MICROSERVICES SPECIAL
+##############################
+
+# Spring Cloud Config temporary files
+/config-repo/
+
+# Local credentials or properties
+*.local.properties
+*.secret.properties
+*.env
+.envrc
+
+##############################
+# KUBERNETES / HELM ARTIFACTS
+##############################
+
+# Helm chart build outputs
+**/charts/**/
+**/helm-new/**/tmpcharts/
+**/helm-new/**/charts/
+
+# K8s auto-generated files
+**/*.generated.yaml
+**/*.backup.yaml
+
+##############################
+# LOGS & TEMP
+##############################
+logs/
+*.log
+*.out
+*.err
+tmp/

@@ -1,0 +1,119 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: "accounts"
+  profiles:
+    active: "prod"
+  datasource:
+    url: jdbc:mysql://localhost:3306/accountsdb
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+  sql:
+    init:
+      mode: always
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+    connection-timeout: 10s
+  cloud:
+    openfeign:
+      circuitbreaker:
+          enabled: true
+    function:
+      definition: updateCommunication
+    stream:
+      bindings:
+        updateCommunication-in-0:
+          destination: communication-sent
+          group: ${spring.application.name}
+        sendCommunication-out-0:
+          destination: send-communication
+      kafka:
+        binder:
+          brokers:
+            - "localhost:9092"
+      default:
+        binder: kafka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    shutdown:
+      access: unrestricted
+    health:
+      probes:
+        enabled: true
+  info:
+    env:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+endpoints:
+  shutdown:
+    enabled: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+info:
+  app:
+    name: "accounts"
+    description: "Kiwix Bank Accounts Application"
+    version: "1.0.0"
+
+logging:
+  level:
+    com:
+      mrkiwix:
+        accounts: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 10
+        permitted-number-of-calls-in-half-open-state: 2
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10000
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 500
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+        ignore-exceptions:
+          - java.lang.NullPointerException # I know it changes nothing because of retry-exceptions.
+        retry-exceptions:
+          - java.util.concurrent.TimeoutException
+  ratelimiter:
+    configs:
+      default:
+        timeout-duration: 1000
+        limit-refresh-period: 5000
+        limit-for-period: 1

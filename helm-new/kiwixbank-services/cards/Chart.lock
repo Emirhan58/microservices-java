@@ -1,0 +1,6 @@
+dependencies:
+- name: kiwixbank-common
+  repository: file://../../kiwixbank-common
+  version: 0.1.0
+digest: sha256:dc9eabe3eb61a927e335a47026b0494f38105014feda6a3f85708bb67c159dda
+generated: "2025-11-27T12:03:13.9574762+03:00"
